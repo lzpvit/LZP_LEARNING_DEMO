@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--
+        <property name="show_sql">true</property>
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect
+        </property>
+        <property name="connection.driver_class">
+            oracle.jdbc.driver.OracleDriver
+        </property>
+        <property name="connection.url">
+            jdbc:oracle:thin:@Pvit:1521:lzp
+        </property>
+        <property name="connection.username">lzp</property>
+        <property name="connection.password">lzp</property>
+        <property name="hibernate.current_session_context_class">thread</property>-->
+     <!-- <property name="hibernate.hbm2ddl.auto">update</property>-->
+        <mapping class="pojo.CompanyInfo"></mapping>
+        <mapping class="pojo.Student"></mapping>
+        <mapping class="pojo.Teacher"></mapping>
+    </session-factory>
+</hibernate-configuration>

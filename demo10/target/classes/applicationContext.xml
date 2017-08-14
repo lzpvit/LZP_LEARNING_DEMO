@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+<!--没有连接池的方式连接
+    <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+    <property name="url" value="jdbc:oracle:thin:@Pvit:1521:lzp" />
+    <property name="username" value="lzp" />
+    <property name="password" value="lzp" />
+</bean>
+-->
+    <bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName">
+            <value>oracle.jdbc.driver.OracleDriver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:oracle:thin:@Pvit:1521:lzp</value>
+        </property>
+        <property name="username">
+            <value>lzp</value>
+        </property>
+        <property name="password">
+            <value>lzp</value>
+        </property>
+    </bean>
+    <bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+       <property name="dataSource" ref="datasource"></property>
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+    <property name="hibernateProperties">
+        <value>
+            hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+            hibernate.show_sql=true
+            hibernate.hibernate.hbm2ddl.auto=update
+        </value>
+    </property>
+    </bean>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="datasource"></property>
+    </bean>
+
+</beans>
